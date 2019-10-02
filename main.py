@@ -19,7 +19,8 @@ class Simulator():
         """启动模拟器"""
         print('[*] starting...')
         while True:
-            self.device.click(self.rd_offset((550, 1650),10))
+            x,y = self.rd_offset((550, 1650),10)
+            self.device.click(x,y)
             self.move_goods()
             self.get_coins()
             time.sleep(randint(5,10))
