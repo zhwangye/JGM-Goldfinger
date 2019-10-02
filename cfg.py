@@ -31,7 +31,7 @@ goods_mapping ={
      'box': 2,
      'sofa': 3,
      'screw': 4,
-     'schoolbag': 5,
+     'bottle': 5,
      'chicken': 6,
      'gear': 7,
      'coal': 8,

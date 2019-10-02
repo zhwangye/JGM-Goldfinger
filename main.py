@@ -18,11 +18,19 @@ class Simulator():
     def start(self):
         """启动模拟器"""
         print('[*] starting...')
+        cnt_loop = 0    # 记录迭代次数
+        bld_index = 1   # 建筑编号，用于建筑升级
         while True:
             x,y = self.rd_offset((550, 1650),10)
             self.device.click(x,y)
             self.move_goods()
             self.get_coins()
+            cnt_loop += 1
+            if cnt_loop % 100 == 0:     # 每收集x轮金币升级一次
+                self.upgrade_building(bld_index)
+                bld_index += 1
+                if bld_index==10:
+                    bld_index = 1
             time.sleep(randint(5,10))
 
     def rd_offset(self,pt,offset=5):
@@ -49,6 +57,22 @@ class Simulator():
                     self.device.swipe(sx,sy,ex,ey)
                     time.sleep(0.15)
         return True if len(goods_pts) > 0 else False
+
+    def upgrade_building(self,index):
+        """自动升级建筑"""
+        upgrade_ui_btn = (963,1153)
+        upgrade_btn = (851,1741)
+        self.device.click(upgrade_ui_btn[0],upgrade_ui_btn[1])  # 进入升级界面
+        time.sleep(0.5)
+        bld_x,bld_y = self.bld_positions.get(index)
+        self.device.click(bld_x,bld_y)  # 选择建筑
+        time.sleep(0.5)
+        for i in range(10):    # 点x下，即升x级
+            self.device.click(upgrade_btn[0], upgrade_btn[1])
+            time.sleep(0.1)
+        self.device.click(upgrade_ui_btn[0], upgrade_ui_btn[1])     # 返回建设界面
+        time.sleep(0.2)
+
 
 
 if __name__ == '__main__':

@@ -17,6 +17,7 @@ if not os.path.exists(proi):
 
 device_info = '127.0.0.1:7555'
 for i in range(100):
+    print("[*]screenshotting...")
     device = uiautomator2.connect(device_info)
     img = device.screenshot(format="opencv")
     cv2.imwrite(os.path.join(pimg,str(uuid.uuid1())+'.jpg'),img)
