@@ -34,6 +34,7 @@ class Simulator():
             started_time = time.time()-self.start_time
             if started_time // 3600 == postcar_index:   # 每隔1h领取一次
                 self.postcar()
+                self.shop()
                 postcar_index += 1
             self.fmt_seconds(started_time)
 
@@ -101,6 +102,28 @@ class Simulator():
         time.sleep(0.5)
         self.device.click(confirm_btn[0], confirm_btn[1])
 
+    def shop(self):
+        """
+        商店打开红包，收集相片。暴力拆解，满福->福气
+        一共点击10轮，每个红包点击6次；在点击相册
+        """
+        shop_btn = (423,1859)
+        # 满福->福气
+        pkts_btn = ((873,701),(535,711),(207,675))
+        album_btn = (509,1415)
+        confirm_btn = (311,1115)
+        self.device.click(shop_btn[0],shop_btn[1])
+        for i in range(10):
+            for pts in pkts_btn:
+                x,y = self.rd_offset(pts)
+                for i in range(6):
+                    self.device.click(x,y)
+                    time.sleep(0.1)
+        for _ in range(10):
+            x,y = self.rd_offset(album_btn)
+            self.device.click(x,y)
+            time.sleep(0.5)
+        self.device.click(confirm_btn[0],confirm_btn[1])
 
 if __name__ == '__main__':
     device_info = '127.0.0.1:7555'
