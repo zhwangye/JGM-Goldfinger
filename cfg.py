@@ -14,17 +14,6 @@ goods_abs_position = ((657,1639),(821,1555),(964,1475))
 # 已包含的货物有
 # bottle box chair chicken food mineral sofa vegetable wood
 # laptop gear coal screw schoolbag steel
-# goods_mapping ={
-#     'bottle': 4,
-#      'box': 2,
-#      'chair': 1,
-#      'chicken': 6,
-#      'food': 8,
-#      'mineral': 9,
-#      'sofa': 3,
-#      'vegetable': 5,
-#      'wood': 7
-# }
 
 goods_mapping ={
     'laptop': 1,

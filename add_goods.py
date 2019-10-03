@@ -6,7 +6,7 @@ import uuid
 import cv2
 import time
 
-## 这个写得很随意，功能实现了就行
+## 截图和保存货物区域到指定文件夹
 
 pimg = 'img/'
 proi = 'img/roi/'

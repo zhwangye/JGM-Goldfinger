@@ -34,7 +34,11 @@ class Goods():
 
     def match_goods(self,img):
         """匹配货物，返回货物和建筑的坐标"""
+        if img is None:
+            return [],[]
         img = img[1400:-200, 400:]
+        if img is None:
+            return [],[]
         goods_pts, bld_pts = [], []
         for gidx,cpt in enumerate(self.goods_position):
             pts = self.get_lt_rb(cpt)
