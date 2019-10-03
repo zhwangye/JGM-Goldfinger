@@ -15,6 +15,19 @@ goods_abs_position = ((657,1639),(821,1555),(964,1475))
 # bottle box chair chicken food mineral sofa vegetable wood
 # laptop gear coal screw schoolbag steel
 
+# goods_mapping ={
+#     'chair': 1,
+#      'box': 2,
+#      'sofa': 3,
+#      'vegetable': 4,
+#      'bottle': 5,
+#      'screw': 6,
+#      'wood': 7,
+#      'food': 8,
+#      'mineral': 9
+# }
+
+
 goods_mapping ={
     'laptop': 1,
      'box': 2,

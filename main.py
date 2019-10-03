@@ -29,8 +29,8 @@ class Simulator():
         bld_index = 1   # 建筑编号，用于建筑升级
         postcar_index = 0    # 记录邮车的次数
         while True:
-            print('[*] loops:',str(cnt_loop))
             print('[*] index:',str(bld_index))
+            print('[*] loops:',str(cnt_loop))
             started_time = time.time()-self.start_time
             if started_time // 3600 == postcar_index:   # 每隔1h领取一次
                 self.postcar()
@@ -38,8 +38,10 @@ class Simulator():
             self.fmt_seconds(started_time)
 
             # 每次都先点击“建设”菜单，增加鲁棒性
-            bld_menu_btn_x,bld_menu_btn_y = self.rd_offset((177,1793),10)
-            self.device.click(bld_menu_btn_x,bld_menu_btn_y)
+            for i in range(5):
+                bld_menu_btn_x, bld_menu_btn_y = self.rd_offset((63, 1880), 10)
+                self.device.click(bld_menu_btn_x,bld_menu_btn_y)
+                time.sleep(0.01)
             # 处理xx之光
             x, y = self.rd_offset((550, 1650), 10)
             self.device.click(x, y)
@@ -51,7 +53,7 @@ class Simulator():
                 bld_index += 1
                 if bld_index==10:
                     bld_index = 1
-            time.sleep(randint(5,10))
+            time.sleep(randint(1,3))
 
     def rd_offset(self,pt,offset=5):
         """每个坐标随机偏移"""
